@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quiz: Englische Revolution 1660–1689</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f3efe6;--card:#fffdf8;--ink:#1f2a3a;--mute:#5d6676;--line:#d9d2c3;--accent:#7a1f2b;--ok:#2f6b3f;--okbg:#e2f0e4;--bad:#a12a2a;--badbg:#f6dfdc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161b24;--card:#1f2632;--ink:#ece8de;--mute:#a0a8b6;--line:#343d4d;--accent:#e08a96;--ok:#7fcf93;--okbg:#1d3a27;--bad:#f09a9a;--badbg:#472222}}
+:root[data-theme="dark"]{--bg:#161b24;--card:#1f2632;--ink:#ece8de;--mute:#a0a8b6;--line:#343d4d;--accent:#e08a96;--ok:#7fcf93;--okbg:#1d3a27;--bad:#f09a9a;--badbg:#472222}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.5rem;margin:0 0 4px;line-height:1.2}
+.sub{color:var(--mute);margin:0 0 18px;font-size:.95rem}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:6px}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.meta{display:flex;justify-content:space-between;color:var(--mute);font-size:.85rem;margin-bottom:14px;font-family:system-ui,sans-serif}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.q{font-size:1.15rem;margin:0 0 14px;font-weight:bold}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-size:1rem;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:8px;padding:11px 13px;margin:0 0 9px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.bad{background:var(--badbg);border-color:var(--bad)}
+.opt:disabled{cursor:default}
+.exp{margin-top:12px;padding:12px;border-left:4px solid var(--accent);background:var(--bg);font-size:.95rem}
+.btn{font:inherit;font-family:system-ui,sans-serif;background:var(--accent);color:var(--card);border:0;border-radius:8px;padding:11px 20px;margin-top:14px;cursor:pointer;font-weight:600}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.score{font-size:2.4rem;margin:0;color:var(--accent)}
+.qr{margin-top:22px;text-align:center}
+.qr .box{display:inline-block;background:#fff;padding:12px;border-radius:8px;border:1px solid var(--line)}
+.qr svg,.qr img{display:block;width:200px;height:200px}
+.qr p{color:var(--mute);font-size:.85rem;margin:8px 0 0;font-family:system-ui,sans-serif}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+<h1>Die Englische Revolution 1660–1689</h1>
+<p class="sub">15 Fragen von der Restauration bis zur Bill of Rights</p>
+<div id="quiz">
+  <div class="bar"><i id="pb"></i></div>
+  <div class="meta"><span id="cnt"></span><span id="sc"></span></div>
+  <div class="card">
+    <p class="q" id="q"></p>
+    <div id="opts"></div>
+    <div class="exp" id="exp" hidden></div>
+    <button class="btn" id="next" hidden></button>
+  </div>
+</div>
+<div id="end" class="card" hidden>
+  <p class="score" id="fs"></p>
+  <p id="fm"></p>
+  <button class="btn" id="again">Quiz neu starten</button>
+</div>
+<section class="qr">
+  <div class="box" id="qrbox"></div>
+  <p>QR-Code scannen, um das Quiz auf dem Handy zu öffnen</p>
+</section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+var Q=[
+["Wer wurde 1660 als König nach England zurückgeholt?",["Jakob II.","Karl II.","Richard Cromwell","Wilhelm von Oranien"],1,"Nach dem Scheitern des Protektorats kehrte Karl II., Sohn des 1649 hingerichteten Karl I., aus dem Exil zurück. Die Monarchie war wiederhergestellt (Restauration)."],
+["Mit welcher Erklärung signalisierte Karl II. 1660 Versöhnung?",["Petition of Right","Habeas-Corpus-Akte","Erklärung von Breda","Toleranzakte"],2,"In der Erklärung von Breda versprach er unter anderem Amnestie für die meisten früheren Gegner und gewisse religiöse Duldung."],
+["Wen traf der Clarendon Code ab 1661 vor allem?",["Die Anglikaner","Die Nonkonformisten (Dissenters) und andere Nicht-Anglikaner","Die Londoner Kaufleute","Den Hochadel"],1,"Die Gesetze stärkten die anglikanische Staatskirche und schränkten Gottesdienste und Ämter von Nonkonformisten stark ein."],
+["Welches Ereignis zerstörte 1666 große Teile der Stadt London?",["Eine Hungersnot","Eine Flut der Themse","Der Große Brand von London","Ein niederländischer Angriff"],2,"Das Feuer brach in einer Bäckerei in der Pudding Lane aus und vernichtete tausende Häuser, auch die alte St Paul's Cathedral."],
+["Was bestimmte der Test Act von 1673?",["Nur Anglikaner durften öffentliche Ämter bekleiden","Alle Bürger mussten Steuern zahlen","Das Parlament musste jährlich tagen","Der König durfte keinen Krieg führen"],0,"Wer ein Amt wollte, musste das anglikanische Abendmahl nehmen. Das schloss vor allem Katholiken aus."],
+["Was regelte die Habeas-Corpus-Akte von 1679?",["Das Wahlrecht für Männer","Den Schutz vor willkürlicher Haft durch richterliche Überprüfung","Die Steuerhoheit des Königs","Die Religionsfreiheit"],1,"Verhaftete mussten einem Richter vorgeführt werden, der die Rechtmäßigkeit der Haft prüfte. Ein Meilenstein des Rechtsstaats."],
+["Was wollte die Exclusion Bill (1679–1681) erreichen?",["Den König absetzen","Das Parlament abschaffen","Jakob, den katholischen Bruder des Königs, von der Thronfolge ausschließen","Die Pest eindämmen"],2,"Viele Protestanten fürchteten einen katholischen König. Karl II. löste das Parlament mehrfach auf, um das Gesetz zu verhindern."],
+["Wofür standen die Whigs im Streit um die Thronfolge?",["Für den Ausschluss Jakobs von der Thronfolge","Für die absolute Monarchie","Für ein Bündnis mit Frankreich","Für die Abschaffung der Kirche"],0,"Die Whigs unterstützten den Ausschluss Jakobs, die Tories verteidigten die erbliche Thronfolge und die Staatskirche. So entstanden die ersten Parteien."],
+["Wer folgte 1685 auf den verstorbenen Karl II.?",["Wilhelm III.","Sein Sohn Karl III.","Sein Bruder Jakob II.","Der Duke of Monmouth"],2,"Karl II. hatte keine legitimen Kinder. Sein katholischer Bruder Jakob II. wurde König."],
+["Wer führte 1685 einen gescheiterten Aufstand gegen Jakob II. an?",["Oliver Cromwell","Der Duke of Monmouth","Wilhelm von Oranien","Der Earl of Clarendon"],1,"Monmouth, ein unehelicher Sohn Karls II., wurde bei Sedgemoor geschlagen und hingerichtet. Es folgten harte Prozesse, die „Bloody Assizes“."],
+["Was erlaubte Jakob II. mit seinen Declarations of Indulgence (1687/88)?",["Religionsfreiheit für Katholiken und Dissenter per königlicher Verfügung","Neue Steuern ohne Parlament","Den Ausschluss aller Protestanten","Die Abschaffung der Bischöfe"],0,"Er setzte Gesetze wie den Test Act per königlichem Erlass außer Kraft. Das ging am Parlament vorbei und alarmierte viele Anglikaner."],
+["Warum kam es 1688 zur Glorious Revolution?",["Karl II. löste das Parlament für immer auf","Der Sohn Jakobs II. ließ eine dauerhafte katholische Dynastie befürchten","Frankreich erklärte England den Krieg","Wilhelm wollte König von Schottland werden"],1,"Nach der Geburt eines katholischen Thronfolgers luden einflussreiche Protestanten Wilhelm von Oranien ein. Jakob floh nach Frankreich."],
+["Wer war Wilhelm von Oranien?",["Ein französischer Marschall","Statthalter der Niederlande und Ehemann von Maria, der protestantischen Tochter Jakobs II.","Ein schottischer Adliger","Ein Bruder Karls II."],1,"Als Protestant mit Thronanspruch durch seine Frau Maria wurde er zum Hoffnungsträger. Beide regierten ab 1689 gemeinsam als Wilhelm III. und Maria II."],
+["Welches Dokument von 1689 beschränkte die Macht des Monarchen und stärkte das Parlament?",["Magna Carta","Bill of Rights","Instrument of Government","Navigationsakte"],1,"Der König durfte nun ohne Parlament weder Gesetze aufheben noch Steuern erheben. Regelmäßige Parlamente und freie Debatten wurden garantiert."],
+["Was gewährte der Toleration Act von 1689?",["Religionsfreiheit für alle, auch Katholiken","Duldung für protestantische Nonkonformisten, nicht aber für Katholiken","Das Ende der anglikanischen Kirche","Wahlrecht für alle Männer"],1,"Protestantische Dissenters durften ihre Gottesdienste abhalten. Katholiken blieben ausgeschlossen, die Staatskirche blieb bestehen."]
+];
+var i=0,score=0,done=false;
+function $(id){return document.getElementById(id)}
+function show(){
+  done=false;var d=Q[i];
+  $("cnt").textContent="Frage "+(i+1)+" von "+Q.length;
+  $("sc").textContent="Punkte: "+score;
+  $("pb").style.width=(i/Q.length*100)+"%";
+  $("q").textContent=d[0];
+  $("exp").hidden=true;$("next").hidden=true;
+  var o=$("opts");o.innerHTML="";
+  d[1].forEach(function(t,k){
+    var b=document.createElement("button");
+    b.className="opt";b.type="button";b.textContent=t;
+    b.onclick=function(){pick(k)};o.appendChild(b);
+  });
+}
+function pick(k){
+  if(done)return;done=true;
+  var d=Q[i],bs=$("opts").children;
+  for(var j=0;j<bs.length;j++){bs[j].disabled=true;if(j===d[2])bs[j].classList.add("ok");}
+  if(k===d[2]){score++}else{bs[k].classList.add("bad")}
+  $("sc").textContent="Punkte: "+score;
+  $("exp").textContent=(k===d[2]?"Richtig! ":"Leider falsch. ")+d[3];
+  $("exp").hidden=false;
+  $("next").textContent=i===Q.length-1?"Ergebnis ansehen":"Nächste Frage";
+  $("next").hidden=false;$("next").focus();
+}
+$("next").onclick=function(){
+  i++;
+  if(i>=Q.length){
+    $("quiz").hidden=true;$("end").hidden=false;
+    $("fs").textContent=score+" von "+Q.length+" richtig";
+    var p=score/Q.length;
+    $("fm").textContent=p>=.9?"Hervorragend! Du kennst die Zeit der Stuarts sehr gut.":p>=.6?"Solide Leistung. Ein Blick auf die falschen Antworten lohnt sich.":"Guter Anfang. Versuch es gleich noch einmal.";
+  }else show();
+};
+$("again").onclick=function(){i=0;score=0;$("end").hidden=true;$("quiz").hidden=false;show()};
+show();
+try{
+  var qr=qrcode(0,"M");qr.addData(location.href);qr.make();
+  $("qrbox").innerHTML=qr.createSvgTag({cellSize:4,margin:0,scalable:true});
+}catch(e){document.querySelector(".qr").hidden=true}
+</script>
+</body>
+</html>
